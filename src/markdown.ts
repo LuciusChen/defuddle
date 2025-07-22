@@ -117,7 +117,7 @@ export function createMarkdownContent(content: string, url: string) {
 		"sub",
 		"svg",
 		"math",
-	]);
+	] as any);
 	turndownService.remove(["button"]);
 
 	turndownService.addRule("list", {
@@ -375,7 +375,7 @@ export function createMarkdownContent(content: string, url: string) {
 		},
 		replacement: function (content, node, options) {
 			if (!isGenericElement(node)) return content;
-			const href = node.getAttribute("href");
+			let href = node.getAttribute("href");
 			const title = node.getAttribute("title");
 
 			if (href && !href.startsWith("http")) {
